@@ -32,6 +32,14 @@ def upload(request):
     return render(request, 'fileuploads/upload.html' , context)
 
 
+def delete_book(request , pk):
+    if request.method == 'POST':
+        book = Book.objects.get(pk=pk)
+        book.delete()
+    return redirect('book_list')
+    
+
+
 
 def book_list(request):
     books = Book.objects.all()
