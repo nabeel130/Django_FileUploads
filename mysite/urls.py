@@ -15,14 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from fileuploads.views import Home ,upload
+from fileuploads.views import Home ,upload ,book_list , upload_book ,BookList ,UploadBookView
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', Home.as_view() ,name = 'home'),
+    path('', Home.as_view() ,name = 'home'),    
     path('upload/', upload ,name = 'upload'),
+    path('books/', book_list ,name = 'book_list'),
+    path('books/upload/', upload_book ,name = 'upload_book'),
+    path('class/books/', BookList.as_view() ,name = 'class_book_list'),
+    path('class/books/upload/', UploadBookView.as_view() ,name = 'class_upload_book'),
    
 ] 
 
